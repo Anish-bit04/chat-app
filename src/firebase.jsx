@@ -1,18 +1,16 @@
-import firebase from 'firebase'
-
+import firebase from 'firebase/app'
 
 const firebaseApp= firebase.initializeApp({
-  apiKey: "AIzaSyCs5ZmCky5cDtm30ejRUas1X9XyZKcjR_M",
-  authDomain: "chat-app-2650e.firebaseapp.com",
-  projectId: "chat-app-2650e",
-  storageBucket: "chat-app-2650e.appspot.com",
-  messagingSenderId: "275486299759",
-  appId: "1:275486299759:web:b84e726e226a5c8303df9a",
-  measurementId: "G-TF88E4JGL0"
+  apiKey: "AIzaSyANBFzTHTtQuzl9ReGf_Bu1xchfc3V_77s",
+  authDomain: "chat-app-37d6e.firebaseapp.com",
+  projectId: "chat-app-37d6e",
+  storageBucket: "chat-app-37d6e.appspot.com",
+  messagingSenderId: "977246332866",
+  appId: "1:977246332866:web:d78ad8f85a28bb9525985b",
+  measurementId: "G-BQW0SBRDK6"
 });
 
 const db = firebaseApp.firestore()
 const auth = firebase.auth()
+
 export {db,auth}
-
-
