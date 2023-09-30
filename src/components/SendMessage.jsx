@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
 import { db, auth } from '../firebase'
-import firebase from 'firebase'
-import { Input, Button } from '@material-ui/core'
+import firebase from 'firebase/app'
+import { Button, Input } from '@mui/material'
+import { addDoc, collection } from 'firebase/firestore'
 
-const SendMessage = ({scroll}) => {
+
+const SendMessage = async({scroll}) => {
   
   const [msg, setMsg] = useState('')
   async function sendMessage(e) {
     e.preventDefault()
     const { uid, photoURL } = auth.currentUser
 
-    await db.collection('messages').add({
-        text: msg,
+    // await db.collection('messages').add({
+    //     text: msg,
+    //     photoURL,
+    //     uid,
+    //     createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    // })
+
+    await addDoc(collection(db, "messages"), {
+      text: msg,
         photoURL,
         uid,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
