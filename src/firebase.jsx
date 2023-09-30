@@ -1,8 +1,6 @@
-import {getAuth} from "firebase/auth";
-import { initializeApp } from 'firebase/app';
-import { getFirestore, getDocs, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import firebase from 'firebase/app'
 
-const firebaseConfig = {
+const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyANBFzTHTtQuzl9ReGf_Bu1xchfc3V_77s",
   authDomain: "chat-app-37d6e.firebaseapp.com",
   projectId: "chat-app-37d6e",
@@ -10,18 +8,10 @@ const firebaseConfig = {
   messagingSenderId: "977246332866",
   appId: "1:977246332866:web:d78ad8f85a28bb9525985b",
   measurementId: "G-BQW0SBRDK6"
-}
+})
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = firebaseApp.firestore()
 
-async function getMessages(){
-  const messages = collection(db,'messages');
-  const messageSnapshot = await getDocs(messages);
-  const messageList = messageSnapshot.docs.map(doc => doc.data());
-  return messageList;
-}
+const auth = firebase.auth()
 
-const auth = getAuth(app);
-
-export default  {db,auth}
+export { db, auth }
